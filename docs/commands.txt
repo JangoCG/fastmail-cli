@@ -1,0 +1,79 @@
+fastmail	fastmail	Fastmail mail, contacts and calendars from your terminal
+fastmail accounts	accounts	List accessible JMAP accounts
+fastmail addressbook	addressbook	Inspect Fastmail address books
+fastmail addressbook list	list	List address books and rights
+fastmail attachment	attachment	List, upload and download attachments
+fastmail attachment download	download EMAIL_ID BLOB_ID	Save an email attachment
+fastmail attachment list	list EMAIL_ID	List attachments and blob IDs
+fastmail attachment upload	upload FILE	Upload a blob for use in JMAP requests
+fastmail auth	auth	Manage Fastmail API and CalDAV credentials
+fastmail auth caldav	caldav	Store a CalDAV app password from stdin
+fastmail auth login	login	Validate and store an API token
+fastmail auth logout	logout	Remove locally stored credentials (does not revoke tokens)
+fastmail auth status	status	Check the token with Fastmail
+fastmail calendar	calendar	Inspect Fastmail calendars via CalDAV
+fastmail calendar list	list	List calendar names and paths
+fastmail completion	completion bash|zsh|fish|powershell	Generate shell completion
+fastmail compose	compose	Compose a draft; add --send to send it
+fastmail config	config	Manage local preferences (credentials are never printed)
+fastmail config set	set KEY VALUE	Set account, identity, session-url, dav-url or dav-username
+fastmail config show	show	Show effective configuration
+fastmail contact	contact	Read and manage contacts through JMAP
+fastmail contact add	add	Create a contact
+fastmail contact delete	delete ID	Permanently delete a contact
+fastmail contact list	list [TEXT...]	List or search contact cards
+fastmail contact read	read ID	Read a complete JSContact card
+fastmail contact search	search TEXT...	List or search contact cards
+fastmail contact update	update ID	Update name or add/update the CLI email or phone field
+fastmail doctor	doctor	Check configuration, authentication and JMAP capabilities
+fastmail draft	draft	Create, inspect, update and send drafts
+fastmail draft create	create	Compose a draft; add --send to send it
+fastmail draft delete	delete ID	Move a draft to Trash
+fastmail draft list	list	List or search email (newest first)
+fastmail draft read	read ID	Read an email, including bodies and attachment metadata
+fastmail draft send	send ID	Submit an existing draft
+fastmail draft update	update ID	Update a draft subject and/or plain text body
+fastmail email	email	Read and manage email
+fastmail email archive	archive ID...	archive email by ID
+fastmail email copy	copy ID...	copy email by ID
+fastmail email delete	delete ID...	delete email by ID
+fastmail email list	list [TEXT...]	List or search email (newest first)
+fastmail email move	move ID...	move email by ID
+fastmail email raw	raw ID	Download original RFC 5322 message to a new file
+fastmail email read	read ID	Read an email, including bodies and attachment metadata
+fastmail email seen	seen ID...	seen email by ID
+fastmail email star	star ID...	star email by ID
+fastmail email trash	trash ID...	trash email by ID
+fastmail email unseen	unseen ID...	unseen email by ID
+fastmail email unstar	unstar ID...	unstar email by ID
+fastmail event	event	Read, create and edit calendar events
+fastmail event add	add TITLE	Create a calendar event
+fastmail event delete	delete PATH	Delete an event resource (a recurring resource is an entire series)
+fastmail event list	list	List event resources overlapping a period (recurring series are not expanded)
+fastmail event read	read PATH	Read the full event resource including iCalendar
+fastmail event update	update PATH	Edit a nonrecurring event without discarding other iCalendar fields
+fastmail forward	forward ID	Forward an email as a draft; --send sends it
+fastmail identity	identity	Inspect available sending identities
+fastmail identity list	list	List identities
+fastmail mailbox	mailbox	List and manage Fastmail folders and labels
+fastmail mailbox create	create NAME	Create a mailbox
+fastmail mailbox delete	delete MAILBOX	Delete an empty, non-system mailbox
+fastmail mailbox list	list	List mailboxes and unread counts
+fastmail mailbox rename	rename MAILBOX NAME	Rename a mailbox
+fastmail masked-email	masked-email	Manage Fastmail Masked Email addresses
+fastmail masked-email create	create	Create an enabled masked address
+fastmail masked-email list	list	List masked addresses
+fastmail masked-email update	update ID	Change state or description
+fastmail mcp	mcp	Serve MCP read tools and draft creation on stdio
+fastmail reply	reply ID	Reply to an email as a draft; --send sends it
+fastmail search	search [TEXT...]	List or search email (newest first)
+fastmail setup	setup codex|claude	Install the Fastmail skill for a coding agent
+fastmail thread	thread	Read conversations
+fastmail thread read	read ID	Read every email in a JMAP thread
+fastmail tui	tui	Open the interactive Fastmail mailbox reader
+fastmail vacation	vacation	Manage automatic vacation replies
+fastmail vacation disable	disable	Disable the vacation reply
+fastmail vacation get	get	Read vacation response
+fastmail vacation set	set	Enable a vacation reply
+fastmail version	version	Show build version
+fastmail watch	watch	Stream account-wide email changes as newline-delimited JSON

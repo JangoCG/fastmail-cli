@@ -1,0 +1,46 @@
+name: Sensitive Change Gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  gate:
+    name: Report sensitive changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read changed paths
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh api "repos/$GH_REPO/pulls/$PR_NUMBER/files" --paginate --slurp \
+            --jq '[.[][] | .filename]' > "$RUNNER_TEMP/fastmail-changed-paths.json"
+      - name: Report paths requiring careful review
+        run: |
+          python3 - <<'PY'
+          import html
+          import json
+          import os
+          from pathlib import Path
+
+          paths = json.loads((Path(os.environ["RUNNER_TEMP"]) / "fastmail-changed-paths.json").read_text())
+          prefixes = (".github/", ".goreleaser.", "internal/auth/", "internal/config/", "internal/jmap/", "internal/dav/", "internal/mcpserver/", "internal/cmd/agents.go", "Makefile")
+          sensitive = [path for path in paths if path.startswith(prefixes)]
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("## Sensitive change report\n\n")
+              if sensitive:
+                  summary.write("Review authentication, network, agent and release changes carefully.\n\n")
+                  for path in sensitive:
+                      escaped = html.escape(path).replace("`", "&#96;")
+                      summary.write(f"- <code>{escaped}</code>\n")
+              else:
+                  summary.write("No sensitive paths changed.\n")
+          if sensitive:
+              print("::warning::Sensitive paths changed; inspect the job summary during review.")
+          PY

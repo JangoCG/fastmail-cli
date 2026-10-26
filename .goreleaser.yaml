@@ -1,0 +1,27 @@
+version: 2
+project_name: fastmail
+builds:
+  - id: fastmail
+    main: ./cmd/fastmail
+    binary: fastmail
+    env: [CGO_ENABLED=0]
+    goos: [darwin, linux, windows]
+    goarch: [amd64, arm64]
+    flags: [-trimpath]
+    ldflags:
+      - -s -w
+      - -X github.com/JangoCG/fastmail-cli/internal/version.Version={{.Version}}
+      - -X github.com/JangoCG/fastmail-cli/internal/version.Commit={{.Commit}}
+      - -X github.com/JangoCG/fastmail-cli/internal/version.Date={{.Date}}
+archives:
+  - formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    files: [LICENSE.md, README.md, docs/*]
+checksum:
+  name_template: checksums.txt
+release:
+  disable: true
+changelog:
+  disable: true

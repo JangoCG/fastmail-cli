@@ -1,0 +1,7 @@
+title = "fastmail-cli gitleaks config"
+
+[allowlist]
+description = "Allowlisted files and patterns"
+paths = [
+  '''.*_test\.go''',
+]
